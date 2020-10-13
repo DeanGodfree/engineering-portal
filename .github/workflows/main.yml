@@ -25,7 +25,23 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
+        
+      - name: run linter
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - uses: Adzz/jest_test_action@v1.0.0
+            with:
+              command: eslint
       
+      - name: run compile
+        runs-on: ubuntu-latest
+          steps:
+            - uses: actions/checkout@v2
+            - uses: Adzz/jest_test_action@v1.0.0
+            with:
+              command: build
+          
       - name: Typescript compiler
         # You may pin to the exact commit or the version.
         # uses: iCrawl/action-tsc@c3f25c126c7805dbbbcbf6f1db0c3be6f5dac069
@@ -35,7 +51,18 @@ jobs:
           # project: # optional
           # Optional build reference path.
           # build: # optional
-
+      - name: Snyk
+        # You may pin to the exact commit or the version.
+        # uses: snyk/actions@7fad562681122205233d1242c3bb39598c5393da
+        uses: snyk/actions@0.3.0
+        with:
+          # Which Snyk command to run, defaults to test
+          command: # optional, default is test
+          # Additional arguments to pass to Snyk
+          args: # optional
+          # Output a snyk.json file with results if running the test command
+          json: # optional    
+          
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
