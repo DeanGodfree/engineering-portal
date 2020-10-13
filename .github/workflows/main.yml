@@ -36,7 +36,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - name: run compile
+      - name: run tsc
+        uses: Adzz/jest_test_action@v1.0.0
+        with:
+          command: tsc
+      - name: run build
         uses: Adzz/jest_test_action@v1.0.0
         with:
           command: build
