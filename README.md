@@ -1,2 +1,3 @@
-# engineering-portal
-example backstage app with github auth and sample plugin to get started
+# [Backstage](https://backstage.io)
+
+This is your newly scaffolded Backstage App, Good Luck!
